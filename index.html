@@ -1,0 +1,96 @@
+
+<!DOCTYPE html>
+<html lang="kk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>QaytaTap — Жоғалған заттар</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <header>
+        <div class="logo">QaytaTap</div>
+
+        <nav>
+            <a href="index.html">Басты бет</a>
+            <a href="#items">Хабарландырулар</a>
+            <a href="#about">Біз туралы</a>
+        </nav>
+
+        <button class="login-btn" onclick="showLogin()">
+            Кіру
+        </button>
+    </header>
+
+    <main>
+        <section class="hero">
+            <p class="tag">Жоғалған заттарыңды бірге табайық!</p>
+
+            <h1>Жоғалттың ба? <br>
+                <span>QaytaTap</span> көмектеседі!
+            </h1>
+
+            <p class="description">
+                Жоғалған немесе табылған заттар туралы
+                хабарландыруларды бір жерден ізде.
+            </p>
+
+            <div class="search-box">
+                <input
+                    type="text"
+                    id="searchInput"
+                    placeholder="Қандай зат іздеп жүрсің?"
+                >
+                <button onclick="searchItems()">Іздеу</button>
+            </div>
+
+            <button class="add-btn" onclick="showLogin()">
+                + Хабарландыру жариялау
+            </button>
+        </section>
+
+        <section class="items" id="items">
+            <h2>Соңғы хабарландырулар</h2>
+            <p>Жоғалған және табылған заттар</p>
+
+            <div class="item-list" id="itemList">
+                <article class="item-card">
+                    <div class="item-icon">🎒</div>
+                    <h3>Қара түсті сөмке</h3>
+                    <p>Орны: Университет</p>
+                    <span class="lost">Жоғалған</span>
+                </article>
+
+                <article class="item-card">
+                    <div class="item-icon">🔑</div>
+                    <h3>Кілттер шоғы</h3>
+                    <p>Орны: Автобус аялдамасы</p>
+                    <span class="found">Табылған</span>
+                </article>
+
+                <article class="item-card">
+                    <div class="item-icon">📱</div>
+                    <h3>Ұялы телефон</h3>
+                    <p>Орны: Кітапхана</p>
+                    <span class="lost">Жоғалған</span>
+                </article>
+            </div>
+        </section>
+
+        <section class="about" id="about">
+            <h2>QaytaTap туралы</h2>
+            <p>
+                Біздің мақсатымыз — жоғалған заттарды табуға
+                және иелеріне қайтаруға көмектесу.
+            </p>
+        </section>
+    </main>
+
+    <footer>
+        <p>© 2026 QaytaTap. Барлық құқықтар қорғалған.</p>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>

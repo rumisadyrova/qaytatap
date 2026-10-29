@@ -1,0 +1,232 @@
+
+<!DOCTYPE html>
+<html lang="kk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>QaytaTap — Хабарландырулар</title>
+    <link rel="stylesheet" href="style.css">
+
+    <style>
+        .reports-hero {
+            text-align: center;
+            padding: 45px 20px;
+            background: linear-gradient(135deg, #eaf0ff, #f8faff);
+        }
+
+        .reports-hero h1 {
+            font-size: clamp(28px, 4vw, 40px);
+            margin-bottom: 10px;
+        }
+
+        .reports-hero p {
+            color: #68738a;
+        }
+
+        .report-controls {
+            max-width: 850px;
+            margin: 25px auto 0;
+            display: flex;
+            gap: 12px;
+            flex-wrap: wrap;
+        }
+
+        .report-controls input,
+        .report-controls select {
+            flex: 1;
+            min-width: 180px;
+            padding: 13px;
+            border: 1px solid #dce2ee;
+            border-radius: 9px;
+            background: white;
+            font-size: 14px;
+        }
+
+        .report-count {
+            margin-bottom: 20px;
+            color: #68738a;
+        }
+
+        .report-card {
+            overflow-wrap: anywhere;
+        }
+
+        .no-results {
+            grid-column: 1 / -1;
+            padding: 30px;
+            text-align: center;
+            background: white;
+            border-radius: 12px;
+            color: #68738a;
+        }
+
+        @media (max-width: 560px) {
+            .report-controls {
+                flex-direction: column;
+            }
+
+            .report-controls input,
+            .report-controls select {
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <div class="logo">QaytaTap</div>
+
+    <nav>
+        <a href="index.html">Басты бет</a>
+        <a href="reports.html">Хабарландырулар</a>
+        <a href="auth.html">Кіру</a>
+    </nav>
+
+    <a class="add-button" href="auth.html">+ Хабарландыру қосу</a>
+</header>
+
+<main>
+    <section class="reports-hero">
+        <h1>Хабарландырулар</h1>
+        <p>Жоғалған затты тап немесе табылған заттың иесін ізде!</p>
+
+        <div class="report-controls">
+            <input
+                type="search"
+                id="searchInput"
+                placeholder="Заттың атауын немесе орнын жаз..."
+                aria-label="Хабарландыруларды іздеу"
+            >
+
+            <select id="typeFilter" aria-label="Зат түрін таңдау">
+                <option value="all">Барлық хабарландыру</option>
+                <option value="lost">Жоғалған заттар</option>
+                <option value="found">Табылған заттар</option>
+            </select>
+        </div>
+    </section>
+
+    <section class="items">
+        <h2>Барлық заттар</h2>
+        <p class="report-count" id="resultCount">
+            6 хабарландыру
+        </p>
+
+        <div class="item-list" id="itemList">
+
+            <article class="item-card" data-type="lost">
+                <div class="item-icon">🎒</div>
+                <span class="lost">Жоғалған</span>
+                <h3>Қара түсті сөмке</h3>
+                <p>Университет ғимаратында жоғалды.</p>
+                <p>📍 Орны: Университет</p>
+                <p>📅 Күні: 25.10.2026</p>
+            </article>
+
+            <article class="item-card" data-type="found">
+                <div class="item-icon">🔑</div>
+                <span class="found">Табылған</span>
+                <h3>Кілттер шоғы</h3>
+                <p>Аялдама маңынан кілттер табылды.</p>
+                <p>📍 Орны: Автобус аялдамасы</p>
+                <p>📅 Күні: 24.10.2026</p>
+            </article>
+
+            <article class="item-card" data-type="lost">
+                <div class="item-icon">📱</div>
+                <span class="lost">Жоғалған</span>
+                <h3>Ұялы телефон</h3>
+                <p>Кітапханада телефон жоғалды.</p>
+                <p>📍 Орны: Кітапхана</p>
+                <p>📅 Күні: 23.10.2026</p>
+            </article>
+
+            <article class="item-card" data-type="found">
+                <div class="item-icon">📘</div>
+                <span class="found">Табылған</span>
+                <h3>Көк түсті дәптер</h3>
+                <p>Аудиториядан дәптер табылды.</p>
+                <p>📍 Орны: 205-аудитория</p>
+                <p>📅 Күні: 22.10.2026</p>
+            </article>
+
+            <article class="item-card" data-type="lost">
+                <div class="item-icon">💳</div>
+                <span class="lost">Жоғалған</span>
+                <h3>Студенттік карта</h3>
+                <p>Студенттік карта іздестірілуде.</p>
+                <p>📍 Орны: Университет ауласы</p>
+                <p>📅 Күні: 21.10.2026</p>
+            </article>
+
+            <article class="item-card" data-type="found">
+                <div class="item-icon">☂️</div>
+                <span class="found">Табылған</span>
+                <h3>Қолшатыр</h3>
+                <p>Қолшатыр оқу ғимаратынан табылды.</p>
+                <p>📍 Орны: Кіреберіс</p>
+                <p>📅 Күні: 20.10.2026</p>
+            </article>
+
+        </div>
+    </section>
+</main>
+
+<footer>
+    <p>© 2026 QaytaTap. Барлық құқықтар қорғалған.</p>
+</footer>
+
+<script>
+    const searchInput = document.getElementById("searchInput");
+    const typeFilter = document.getElementById("typeFilter");
+    const itemCards = document.querySelectorAll(".item-card");
+    const resultCount = document.getElementById("resultCount");
+    const itemList = document.getElementById("itemList");
+
+    function filterItems() {
+        const searchText = searchInput.value.toLowerCase().trim();
+        const selectedType = typeFilter.value;
+        let visibleCount = 0;
+
+        itemCards.forEach(function(card) {
+            const cardText = card.textContent.toLowerCase();
+            const cardType = card.dataset.type;
+
+            const matchesSearch = cardText.includes(searchText);
+            const matchesType =
+                selectedType === "all" || cardType === selectedType;
+
+            if (matchesSearch && matchesType) {
+                card.hidden = false;
+                visibleCount++;
+            } else {
+                card.hidden = true;
+            }
+        });
+
+        resultCount.textContent =
+            "Табылған хабарландыру саны: " + visibleCount;
+
+        let emptyMessage = document.getElementById("emptyMessage");
+
+        if (visibleCount === 0) {
+            if (!emptyMessage) {
+                emptyMessage = document.createElement("p");
+                emptyMessage.id = "emptyMessage";
+                emptyMessage.className = "no-results";
+                emptyMessage.textContent =
+                    "Іздеу бойынша хабарландыру табылмады.";
+                itemList.appendChild(emptyMessage);
+            }
+        } else if (emptyMessage) {
+            emptyMessage.remove();
+        }
+    }
+
+    searchInput.addEventListener("input", filterItems);
+    typeFilter.addEventListener("change", filterItems);
+</script>
+
+</body>
+</html>

@@ -1,0 +1,215 @@
+
+<!DOCTYPE html>
+<html lang="kk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>QaytaTap — Кіру және тіркелу</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        .auth-page {
+            min-height: 80vh;
+            padding: 45px 20px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background: linear-gradient(135deg, #eaf0ff, #f8faff);
+        }
+
+        .auth-container {
+            width: 100%;
+            max-width: 440px;
+            padding: 32px;
+            background: white;
+            border-radius: 18px;
+            box-shadow: 0 8px 30px #243b6815;
+        }
+
+        .auth-container h1 {
+            text-align: center;
+            color: #2457d6;
+            margin-bottom: 8px;
+        }
+
+        .auth-description {
+            text-align: center;
+            color: #68738a;
+            margin-bottom: 25px;
+        }
+
+        .auth-tabs {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 25px;
+        }
+
+        .auth-tabs button {
+            flex: 1;
+            padding: 12px;
+            border: 1px solid #e1e7f3;
+            border-radius: 9px;
+            background: #f5f7fc;
+            cursor: pointer;
+        }
+
+        .auth-tabs button.active {
+            background: #2457d6;
+            color: white;
+        }
+
+        .auth-form label {
+            display: block;
+            margin: 14px 0 6px;
+            font-weight: bold;
+            font-size: 14px;
+        }
+
+        .auth-form input {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #dce2ee;
+            border-radius: 9px;
+            font-size: 15px;
+        }
+
+        .auth-submit {
+            width: 100%;
+            margin-top: 22px;
+            padding: 13px;
+            border: none;
+            border-radius: 9px;
+            background: #2457d6;
+            color: white;
+            font-size: 16px;
+            cursor: pointer;
+        }
+
+        .auth-submit:hover {
+            background: #1945b5;
+        }
+
+        .auth-back {
+            display: block;
+            text-align: center;
+            margin-top: 20px;
+            color: #2457d6;
+        }
+
+        @media (max-width: 480px) {
+            .auth-container {
+                padding: 23px 18px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <div class="logo">QaytaTap</div>
+    <nav>
+        <a href="index.html">Басты бет</a>
+        <a href="reports.html">Хабарландырулар</a>
+    </nav>
+</header>
+
+<main class="auth-page">
+    <section class="auth-container">
+        <h1 id="formTitle">Қош келдің!</h1>
+        <p class="auth-description" id="formDescription">
+            QaytaTap платформасына кір
+        </p>
+
+        <div class="auth-tabs">
+            <button type="button" id="loginTab" class="active"
+                onclick="showForm('login')">Кіру</button>
+            <button type="button" id="registerTab"
+                onclick="showForm('register')">Тіркелу</button>
+        </div>
+
+        <form class="auth-form" id="authForm">
+            <div id="nameField" hidden>
+                <label for="fullName">Аты-жөнің</label>
+                <input type="text" id="fullName"
+                    placeholder="Аты-жөніңді енгіз"
+                    autocomplete="name">
+            </div>
+
+            <label for="email">Электрондық пошта</label>
+            <input type="email" id="email"
+                placeholder="example@mail.com"
+                autocomplete="email" required>
+
+            <label for="password">Құпиясөз</label>
+            <input type="password" id="password"
+                placeholder="Кемінде 6 таңба"
+                minlength="6" autocomplete="current-password"
+                required>
+
+            <button class="auth-submit" type="submit" id="submitBtn">
+                Кіру
+            </button>
+            <p id="formMessage" role="status" aria-live="polite"></p>
+        </form>
+
+        <a class="auth-back" href="index.html">
+            ← Басты бетке қайту
+        </a>
+    </section>
+</main>
+
+<footer>
+    <p>© 2026 QaytaTap. Барлық құқықтар қорғалған.</p>
+</footer>
+
+<script>
+    let currentForm = "login";
+
+    function showForm(type) {
+        currentForm = type;
+
+        const isRegister = type === "register";
+
+        document.getElementById("nameField").hidden = !isRegister;
+        document.getElementById("fullName").required = isRegister;
+
+        document.getElementById("formTitle").textContent =
+            isRegister ? "Тіркелу" : "Қош келдің!";
+
+        document.getElementById("formDescription").textContent =
+            isRegister
+                ? "QaytaTap платформасында аккаунт аш"
+                : "QaytaTap платформасына кір";
+
+        document.getElementById("submitBtn").textContent =
+            isRegister ? "Тіркелу" : "Кіру";
+
+        document.getElementById("loginTab").classList.toggle(
+            "active", !isRegister
+        );
+
+        document.getElementById("registerTab").classList.toggle(
+            "active", isRegister
+        );
+
+        document.getElementById("formMessage").textContent = "";
+    }
+
+    document.getElementById("authForm").addEventListener(
+        "submit", function(event) {
+            event.preventDefault();
+
+            const message = document.getElementById("formMessage");
+
+            if (currentForm === "register") {
+                message.textContent =
+                    "Интерфейс дайын. Тіркеу үшін PHP серверімен байланыстыру қажет.";
+            } else {
+                message.textContent =
+                    "Интерфейс дайын. Кіру үшін PHP серверімен байланыстыру қажет.";
+            }
+        }
+    );
+</script>
+
+</body>
+</html>
